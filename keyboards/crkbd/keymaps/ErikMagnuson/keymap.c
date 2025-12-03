@@ -17,39 +17,67 @@
     */
 
     #include QMK_KEYBOARD_H
-
+    
+    enum layers {
+      _WIN,
+      _MAC,
+      _FN
+    };
+    
     const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-        [0] = LAYOUT_split_3x6_3_ex2(
+        [_WIN] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
         KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_RIGHT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-          MO(1),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_DOWN,                    KC_LEFT,     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_RALT,
+          MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_DOWN,                    KC_LEFT,     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_RALT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
                                            KC_LCTL,   KC_SPC,  KC_TAB,                     KC_BSPC,  KC_ENT, KC_RGUI
                                         //`--------------------------'                   `--------------------------'
-
     ),
-
-        [1] = LAYOUT_split_3x6_3_ex2(
+        [_MAC] = LAYOUT_split_3x6_3_ex2(
+    //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
+        KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_RIGHT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
+          MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_DOWN,                    KC_LEFT,     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_RALT,
+    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
+        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
+    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
+                                           KC_LGUI,   KC_SPC,  KC_TAB,                     KC_BSPC,  KC_ENT, KC_RCTL
+                                        //`--------------------------'                   `--------------------------'
+    
+    ),
+    
+        [_FN] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
         KC_TRNS, LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5) ,KC_VOLU,    KC_MNXT,  KC_P7,   KC_P8,   KC_P9,    KC_LBRC, KC_RBRC,  KC_BSPC,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         KC_TRNS,   LSFT(KC_6),   LSFT(KC_7),   LSFT(KC_8),   KC_MINUS, KC_EQL, KC_VOLD,  KC_MPLY,    KC_P4,   KC_P5,   KC_P6, LSFT(KC_9), LSFT(KC_0), KC_SCLN,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        KC_TRNS,  LSFT(KC_MINUS), LSHFT(KC_GRV),   KC_GRV,    KC_BSLS, KC_TRNS,                    KC_P1,   KC_P2,  KC_P3M, KC_DOT, KC_CAPS,  UG_TOGG,
+        KC_TRNS,  LSFT(KC_MINUS), LSFT(KC_GRV),   KC_GRV,    KC_BSLS, KC_TRNS,                    KC_P1,   KC_P2,  KC_P3, KC_DOT, KC_CAPS,  UG_TOGG,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
                                            KC_TRNS,  KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_P0, KC_TRNS
                                         //`--------------------------'                   `--------------------------'
     ),
     };
-
+    
+    void keyboard_post_init_user(void) {
+      switch (detected_host_os()) {
+        case OS_MACOS:
+          layer_on(_MAC);
+          break;
+        default:
+          layer_on(_WIN);
+          break;
+      }
+    }
+    
     #ifdef ENCODER_MAP_ENABLE
     const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-    [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-    [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-    [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+        [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+        [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+        [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
+        [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
     };
     #endif
