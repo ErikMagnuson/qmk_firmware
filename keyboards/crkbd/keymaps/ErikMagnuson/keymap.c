@@ -29,7 +29,7 @@
     //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
         KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_RIGHT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-          MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_DOWN,                    KC_LEFT,     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_RALT,
+          MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_DOWN,                    KC_LEFT,     KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, KC_RALT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
@@ -40,7 +40,7 @@
     //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
         KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_RIGHT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-          MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_DOWN,                    KC_LEFT,     KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_RALT,
+          MO(2),    KC_A,    KC_S,    KC_D,    KC_F,    KC_G, KC_DOWN,                    KC_LEFT,     KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, KC_RALT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
@@ -61,16 +61,19 @@
                                         //`--------------------------'                   `--------------------------'
     ),
     };
-    
-    void keyboard_post_init_user(void) {
-      switch (detected_host_os()) {
-        case OS_MACOS:
-          layer_on(_MAC);
-          break;
-        default:
-          layer_on(_WIN);
-          break;
-      }
+
+    bool process_detected_host_os_user(os_variant_t detected_os) {
+        
+        switch (detected_os) {
+            case OS_MACOS:
+                layer_on(_MAC);
+                break;
+            default:
+                layer_on(_WIN);
+                break;
+        }
+
+        return true;
     }
     
     #ifdef ENCODER_MAP_ENABLE
