@@ -51,9 +51,9 @@
     
         [_FN] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
-        KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, KC_COPY,              KC_REDO, KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
+        KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, KC_COPY,              KC_AGAIN, KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
     //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
-        KC_VOLD, LSFT(KC_3), LSFT(KC_4), KC_LPRN, KC_RPRN, KC_MINUS, KC_PASTE,             KC_UNDO, KC_P4, KC_P5, KC_P6, KC_PPLS, LSFT(SCLN), KC_MPLY,
+        KC_VOLD, LSFT(KC_3), LSFT(KC_4), KC_LPRN, KC_RPRN, KC_MINUS, KC_PASTE,             KC_UNDO, KC_P4, KC_P5, KC_P6, KC_PPLS, LSFT(KC_SCLN), KC_MPLY,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         KC_TRNS, LSFT(KC_5), LSFT(KC_6), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_GRV,                    KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
