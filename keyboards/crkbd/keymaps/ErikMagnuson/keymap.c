@@ -21,7 +21,8 @@
     enum layers {
       _WIN,
       _MAC,
-      _FN
+      _WINFN,
+      _MACFN
     };
     
     const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -65,7 +66,7 @@
     //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
         KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, LGUI(KC_C),              LGUI(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
     //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
-        KC_VOLD, LCTL_T(LSFT(KC_3)), LALT_T(KC_4)), LSFT_T(KC_LPRN), LGUI_T(KC_RPRN), KC_MINUS, LGUI(KC_V),             LGUI(KC_Z), KC_P4, RGUI_T(KC_P5), RSFT_T(KC_P6), LALT_T(KC_PPLS), RCTL_T(LSFT(KC_SCLN)), KC_MPLY,
+        KC_VOLD, LCTL_T(LSFT(KC_3)), LALT_T(KC_4), LSFT_T(KC_LPRN), LGUI_T(KC_RPRN), KC_MINUS, LGUI(KC_V),             LGUI(KC_Z), KC_P4, RGUI_T(KC_P5), RSFT_T(KC_P6), LALT_T(KC_PPLS), RCTL_T(LSFT(KC_SCLN)), KC_MPLY,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         DF(0), LSFT(KC_5), LSFT(KC_6), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_GRV,                    KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
