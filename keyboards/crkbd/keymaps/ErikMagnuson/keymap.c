@@ -40,7 +40,7 @@
 
             [_WINFN] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
-        KC_VOLU, KC_EXLM, KC_AT, KC_LBRC, KC_RBRC, KC_BSLS, LCTL(KC_V),                  CTL(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
+        KC_VOLU, KC_EXLM, KC_AT, KC_LBRC, KC_RBRC, KC_BSLS, LCTL(KC_V),                  LCTL(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
     //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
         KC_VOLD, KC_HASH, KC_DLR, KC_LPRN, KC_RPRN, KC_MINUS, LCTL(KC_C),                LCTL(KC_Z), KC_P4, KC_P5, KC_P6, KC_PPLS, KC_COLN, KC_MPLY,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
