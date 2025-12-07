@@ -40,11 +40,11 @@
 
             [_WINFN] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
-        KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, LCTL(KC_C),              LCTL(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
+        KC_VOLU, KC_EXLM, KC_AT, KC_LBRC, KC_RBRC, KC_BSLS, LCTL(KC_V),                  CTL(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
     //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
-        KC_VOLD, LGUI_T(LSFT(KC_3)), LALT_T(LSFT(KC_4)), LSFT_T(KC_LPRN), LCTL_T(KC_RPRN), KC_MINUS, LCTL(KC_V),             LCTL(KC_Z), KC_P4, RCTL_T(KC_P5), RSFT_T(KC_P6), LALT_T(KC_PPLS), RGUI_T(LSFT(KC_SCLN)), KC_MPLY,
+        KC_VOLD, KC_HASH, KC_DLR, KC_LPRN, KC_RPRN, KC_MINUS, LCTL(KC_C),                LCTL(KC_Z), KC_P4, KC_P5, KC_P6, KC_PPLS, KC_COLN, KC_MPLY,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        DF(2), LSFT(KC_5), LSFT(KC_6), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_GRV,                    KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
+        DF(2), KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_UNDS,                                       KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
                                            KC_TRNS,  KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_P0, KC_TRNS
                                         //`--------------------------'                   `--------------------------'
@@ -64,15 +64,15 @@
     ),
                 [_MACFN] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
-        KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, LGUI(KC_C),              LGUI(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
+        KC_VOLU, KC_EXLM, KC_AT, KC_LBRC, KC_RBRC, KC_BSLS, LGUI(KC_V),              LGUI(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
     //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
-        KC_VOLD, LCTL_T(LSFT(KC_3)), LALT_T(KC_4), LSFT_T(KC_LPRN), LGUI_T(KC_RPRN), KC_MINUS, LGUI(KC_V),             LGUI(KC_Z), KC_P4, RGUI_T(KC_P5), RSFT_T(KC_P6), LALT_T(KC_PPLS), RCTL_T(LSFT(KC_SCLN)), KC_MPLY,
+        KC_VOLD, KC_HASH, KC_DLR, KC_LPRN, KC_RPRN, KC_AMPR, LGUI(KC_C),             LGUI(KC_Z), KC_P4, KC_P5, KC_P6, KC_PPLS, KC_COLN, KC_MPLY,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        DF(0), LSFT(KC_5), LSFT(KC_6), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_GRV,                    KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
+        DF(2), KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_PIPE,                                       KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_TRNS,  KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_P0, KC_TRNS
+                                           KC_TRNS,  KC_TRNS,  KC_MINUS,                   KC_UNDS,  KC_P0, KC_TRNS
                                         //`--------------------------'                   `--------------------------'
-    ),
+    ),                             //`--------------------------'                   `--------------------------'
     };
 
     bool process_detected_host_os_user(os_variant_t detected_os) {
