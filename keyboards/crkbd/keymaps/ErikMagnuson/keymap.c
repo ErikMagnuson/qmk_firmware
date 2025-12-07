@@ -29,33 +29,45 @@
     //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
         KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_LEFT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_DEL,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-          MO(2), LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G, KC_DOWN, KC_RIGHT,     KC_H,    RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RGUI_T(KC_QUOT), KC_RALT,
+          OSL(1), LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G, KC_DOWN, KC_RIGHT,     KC_H,    RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RGUI_T(KC_QUOT), KC_RALT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-                                           OSM(MO(2)),   KC_SPC,  KC_TAB,                  KC_BSPC,  KC_ENT, OSM(MO(2))
+                                           OSL(2),   KC_SPC,  KC_TAB,                  KC_BSPC,  KC_ENT, OSL(2)
                                         //`--------------------------'                   `--------------------------'
     ),
+
+            [_WINFN] = LAYOUT_split_3x6_3_ex2(
+    //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
+        KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, LCTL(KC_C),              LCTL(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
+    //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
+        KC_VOLD, LGUI_T(LSFT(KC_3)), LALT_T(LSFT(KC_4)), LSFT_T(KC_LPRN), LCTL_T(KC_RPRN), KC_MINUS, LCTL(KC_V),             LCTL(KC_Z), KC_P4, RCTL_T(KC_P5), RSFT_T(KC_P6), LALT_T(KC_PPLS), RGUI_T(LSFT(KC_SCLN)), KC_MPLY,
+    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
+        DF(2), LSFT(KC_5), LSFT(KC_6), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_GRV,                    KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
+    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
+                                           KC_TRNS,  KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_P0, KC_TRNS
+                                        //`--------------------------'                   `--------------------------'
+    ),
+    
         [_MAC] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
         KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_LEFT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_DEL,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-          MO(2), LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G, KC_DOWN, KC_RIGHT,     KC_H,    RGUI_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RCTL_T(KC_QUOT), KC_RALT,
+        OSL(3), LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G, KC_DOWN, KC_RIGHT,     KC_H,    RGUI_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RCTL_T(KC_QUOT), KC_RALT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
         KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-                                           OSM(MO(2)),   KC_SPC,  KC_TAB,                  KC_BSPC,  KC_ENT, OSM(MO(2))
+                                           OSL(3),   KC_SPC,  KC_TAB,                  KC_BSPC,  KC_ENT, OSL(3)
                                         //`--------------------------'                   `--------------------------'
     
     ),
-    
-        [_FN] = LAYOUT_split_3x6_3_ex2(
+                [_MACFN] = LAYOUT_split_3x6_3_ex2(
     //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
-        KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, KC_COPY,              KC_AGAIN, KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
+        KC_VOLU, LSFT(KC_1), LSFT(KC_2), KC_LBRC, KC_RBRC, KC_BSLS, LGUI(KC_C),              LGUI(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
     //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
-        KC_VOLD, LSFT(KC_3), LSFT(KC_4), KC_LPRN, KC_RPRN, KC_MINUS, KC_PASTE,             KC_UNDO, KC_P4, KC_P5, KC_P6, KC_PPLS, LSFT(KC_SCLN), KC_MPLY,
+        KC_VOLD, LCTL_T(LSFT(KC_3)), LALT_T(KC_4)), LSFT_T(KC_LPRN), LGUI_T(KC_RPRN), KC_MINUS, LGUI(KC_V),             LGUI(KC_Z), KC_P4, RGUI_T(KC_P5), RSFT_T(KC_P6), LALT_T(KC_PPLS), RCTL_T(LSFT(KC_SCLN)), KC_MPLY,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        KC_TRNS, LSFT(KC_5), LSFT(KC_6), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_GRV,                    KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
+        DF(0), LSFT(KC_5), LSFT(KC_6), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_GRV,                    KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
     //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
                                            KC_TRNS,  KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_P0, KC_TRNS
                                         //`--------------------------'                   `--------------------------'
@@ -66,10 +78,10 @@
         
         switch (detected_os) {
             case OS_MACOS:
-                layer_on(_MAC);
+                set_single_persistent_default_layer(_MAC);
                 break;
             default:
-                layer_on(_WIN);
+                set_single_persistent_default_layer(_WIN);
                 break;
         }
 
