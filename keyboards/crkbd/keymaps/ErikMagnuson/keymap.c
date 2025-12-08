@@ -19,70 +19,80 @@
     #include QMK_KEYBOARD_H
     
     enum layers {
-      _WIN,
-      _MAC,
-      _WINFN,
-      _MACFN
+      WIN,
+      MAC,
+      WINFN,
+      MACFN,
+      NUM
     };
+
+    enum custom_keycodes {}
+
+    enum keycode_alises {
+
+    }
+
+
     
     const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-        [_WIN] = LAYOUT_split_3x6_3_ex2(
-    //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
-        KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_LEFT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_DEL,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-          OSL(1), LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G, KC_DOWN, KC_RIGHT,     KC_H,    RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RGUI_T(KC_QUOT), KC_RALT,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-                                           OSL(2),   KC_SPC,  KC_TAB,                  KC_BSPC,  KC_ENT, OSL(2)
-                                        //`--------------------------'                   `--------------------------'
-    ),
+        [MAC] = LAYOUT_LR(
+          KC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, G(KC_V), 
+          OSL(NUM), LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G, G(KC_C),
+          KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B,
+                                                OSL(SYM),   KC_SPC,  KC_TAB,
 
-            [_WINFN] = LAYOUT_split_3x6_3_ex2(
-    //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
-        KC_VOLU, KC_EXLM, KC_AT, KC_LBRC, KC_RBRC, KC_BSLS, LCTL(KC_V),                  LCTL(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
-    //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
-        KC_VOLD, KC_HASH, KC_DLR, KC_LPRN, KC_RPRN, KC_MINUS, LCTL(KC_C),                LCTL(KC_Z), KC_P4, KC_P5, KC_P6, KC_PPLS, KC_COLN, KC_MPLY,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        DF(2), KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_UNDS,                                       KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_TRNS,  KC_TRNS, KC_TRNS,                    KC_TRNS,  KC_P0, KC_TRNS
-                                        //`--------------------------'                   `--------------------------'
-    ),
-    
-        [_MAC] = LAYOUT_split_3x6_3_ex2(
-    //,--------------------------------------------------------------.                   ,--------------------------------------------------------------.
-        KC_ESC,     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,   KC_UP,                    KC_LEFT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_DEL,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        OSL(3), LCTL_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LGUI_T(KC_F), KC_G, KC_DOWN, KC_RIGHT,     KC_H,    RGUI_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RCTL_T(KC_QUOT), KC_RALT,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                          KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-                                           OSL(3),   KC_SPC,  KC_TAB,                  KC_BSPC,  KC_ENT, OSL(3)
-                                        //`--------------------------'                   `--------------------------'
-    
-    ),
-                [_MACFN] = LAYOUT_split_3x6_3_ex2(
-    //,--------------------------------------------------------------------.             ,--------------------------------------------------------------.
-        KC_VOLU, KC_EXLM, KC_AT, KC_LBRC, KC_RBRC, KC_BSLS, LGUI(KC_V),              LGUI(KC_Y), KC_P7, KC_P8, KC_P9, KC_PAST, KC_SCLN, KC_MNXT,
-    //|--------------------------------------------------------------------|             |--------+--------+--------+--------+--------+--------+--------|
-        KC_VOLD, KC_HASH, KC_DLR, KC_LPRN, KC_RPRN, KC_AMPR, LGUI(KC_C),             LGUI(KC_Z), KC_P4, KC_P5, KC_P6, KC_PPLS, KC_COLN, KC_MPLY,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-        DF(2), KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_PIPE,                                       KC_P1, KC_P2, KC_P3, KC_TRNS, KC_PEQL, UG_TOGG,
-    //|--------+--------+--------+--------+--------+--------+--------|                   |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_TRNS,  KC_TRNS,  KC_MINUS,                   KC_UNDS,  KC_P0, KC_TRNS
-                                        //`--------------------------'                   `--------------------------'
-    ),                             //`--------------------------'                   `--------------------------'
+                    KC_LEFT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_DEL,
+                    KC_H,    RGUI_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RCTL_T(KC_QUOT), OSL(NUM),
+                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
+            KC_BSPC,  KC_ENT, OSL(SYM)
+        ),
+
+        [WIN] = LAYOUT_LR(
+          KC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, C(KC_V),
+          OSL(NUM), LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G, C(KC_C),
+          KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B,
+                                                OSL(SYM),   KC_SPC,  KC_TAB,
+
+                    KC_LEFT,    KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_DEL,
+                    KC_H,    RCTL_T(KC_J), RSFT_T(KC_K), LALT_T(KC_L), RGUI_T(KC_QUOT), OSL(NUM),
+                    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_RSFT,
+            KC_BSPC,  KC_ENT, OSL(SYM)
+        ),
+
+        [SYM] = LAYOUT_LR(
+            _______, KC_GRV , KC_TILD, KC_HASH, KC_AMPR, KC_PIPE, _______,
+            _______, KC_EXLM, KC_UNDS, KC_COLN, KC_EQL, KC_DLR, _______,
+            _______, KC_PERC, KC_QUES, KC_ASTR, KC_PLUS, KC_BSLS,
+                                                _______, _______, _______,
+                                                        
+                    _______, KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , _______, _______,
+                    _______, KC_AT, KC_LPRN, KC_RPRN, KC_COLN, KC_SCLN, _______,
+                             KC_SLSH, KC_LBRC, KC_RBRC, _______, _______, _______,
+                    _______, _______, _______ 
+
+        ),
+
+        [NUM] = LAYOUT_LR(
+            _______, _______,_______,_______,_______,_______,_______, _______,
+            _______, _______,_______,_______,_______,_______,_______, _______,
+            _______, _______,_______,_______,_______,_______,_______,
+                                                    _______, _______, _______,
+                                                        
+                    _______, KC_7, KC_8, KC_9, KC_ASTR, _______, _______, _______,
+                    _______, KC_4, KC_5, KC_6, KC_PLUS,_______,
+                             KC_1, KC_2, KC_3, KC_DOT, _______, _______,
+                    _______, KC_0, _______ 
+        ),
     };
 
     bool process_detected_host_os_user(os_variant_t detected_os) {
         
         switch (detected_os) {
             case OS_MACOS:
-                set_single_persistent_default_layer(_MAC);
+                default_layer_set(MAC);
                 break;
             default:
-                set_single_persistent_default_layer(_WIN);
+                default_layer_set(WIN);
                 break;
         }
 
