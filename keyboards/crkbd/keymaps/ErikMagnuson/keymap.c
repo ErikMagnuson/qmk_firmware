@@ -53,13 +53,15 @@
         ),
 
         [NUM] = LAYOUT_split_3x6_3_ex2(
-            _______, KC_HOME,KC_PGUP,KC_UP  , KC_PGDN,KC_END,_______,                      _______, _______, KC_7, KC_8, KC_9, KC_ASTR, _______, 
-            _______, _______,KC_LEFT,KC_DOWN,KC_RGHT,_______,_______,                          _______, _______, KC_4, KC_5, KC_6, KC_PLUS,_______, 
-            _______, _______,_______,_______,_______,_______,                                           _______, KC_1, KC_2, KC_3, KC_DOT, _______, 
+            _______, KC_HOME,KC_PGUP,KC_UP  , KC_PGDN,KC_END,_______,                          _______, KC_7, KC_8, KC_9, KC_ASTR, _______, _______,
+            _______, _______,KC_LEFT,KC_DOWN,KC_RGHT,_______,_______,                          _______, KC_4, KC_5, KC_6, KC_PLUS,_______, _______,
+            _______, _______,_______,_______,_______,_______,                                           KC_1, KC_2, KC_3, KC_DOT, _______, _______,
                                                     _______, _______, _______,                 _______, KC_0, _______ 
         ),
     };
 
+    
+    // set default layer based on os
     bool process_detected_host_os_user(os_variant_t detected_os) {
         
         switch (detected_os) {
@@ -73,7 +75,8 @@
 
         return true;
     }
-    
+
+    // define button to toggle between windows and mac default layers
     bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case SW_OS:
