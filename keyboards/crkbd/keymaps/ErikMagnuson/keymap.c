@@ -24,6 +24,11 @@
       NUM, 
       SYM
     };
+
+    enum custom_keycodes {
+      // toggle between mac and windows default layers
+      SW_OS = SAFE_RANGE, // Define the custom keycode safely
+    };
     
     const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         [MAC] = LAYOUT_split_3x6_3_ex2(
@@ -41,15 +46,15 @@
         ),
 
         [SYM] = LAYOUT_split_3x6_3_ex2(
-            _______, KC_GRV , KC_TILD, KC_HASH, KC_AMPR, KC_PIPE, _______,                      _______, KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , _______, _______,
-            _______, KC_EXLM, KC_UNDS, KC_COLN, KC_EQL, KC_DLR, _______,                        _______, KC_AT, KC_LPRN, KC_RPRN, KC_COLN, KC_SCLN, _______,
-            _______, KC_PERC, KC_QUES, KC_ASTR, KC_PLUS, KC_BSLS,                                        KC_SLSH, KC_LBRC, KC_RBRC, _______, _______, _______,
+            _______, KC_GRV , KC_TILD, KC_HASH, KC_AMPR, KC_PIPE, KC_VOLU,                      KC_MNXT, KC_CIRC, KC_LCBR, KC_RCBR, KC_LBRC, KC_RBRC, SW_OS,
+            _______, KC_EXLM, KC_UNDS, KC_COLN, KC_EQL, KC_DLR, KC_VOLD,                        KC_MPLY, KC_AT, KC_LPRN, KC_RPRN, KC_COLN, KC_SCLN, _______,
+            _______, KC_PERC, KC_QUES, KC_ASTR, KC_PLUS, KC_BSLS,                                        KC_SLSH, KC_MINS, KC_LT, KC_GT, _______, UG_TOGG,
                                                 _______, _______, _______,                      _______, _______, _______ 
         ),
 
         [NUM] = LAYOUT_split_3x6_3_ex2(
-            _______, _______,_______,_______,_______,_______,_______,                          _______, _______, KC_7, KC_8, KC_9, KC_ASTR, _______, 
-            _______, _______,_______,_______,_______,_______,_______,                          _______, _______, KC_4, KC_5, KC_6, KC_PLUS,_______, 
+            _______, KC_HOME,KC_PGUP,KC_UP  , KC_PGDN,KC_END,_______,                      _______, _______, KC_7, KC_8, KC_9, KC_ASTR, _______, 
+            _______, _______,KC_LEFT,KC_DOWN,KC_RGHT,_______,_______,                          _______, _______, KC_4, KC_5, KC_6, KC_PLUS,_______, 
             _______, _______,_______,_______,_______,_______,                                           _______, KC_1, KC_2, KC_3, KC_DOT, _______, 
                                                     _______, _______, _______,                 _______, KC_0, _______ 
         ),
@@ -69,11 +74,22 @@
         return true;
     }
     
-    #ifdef ENCODER_MAP_ENABLE
-    const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-        [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-        [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-        [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-        [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(KC_MPRV, KC_MNXT), ENCODER_CCW_CW(RM_VALD, RM_VALU), ENCODER_CCW_CW(KC_RGHT, KC_LEFT), },
-    };
-    #endif
+    bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SW_OS:
+            if (record->event.pressed) {
+                // Check if the current default layer is Windows
+                if (get_highest_layer(default_layer_state) == WIN) {
+                    // If WIN, switch to MAC
+                    default_layer_set(1UL << MAC);
+                } else {
+                    // Otherwise (if MAC or undefined), switch to WIN
+                    default_layer_set(1UL << WIN);
+                }
+            };
+            return false; // Skip standard processing for this key
+            
+        // ... handle other custom keycodes here ...
+    }
+    return true; // Process all other keys normally
+}
