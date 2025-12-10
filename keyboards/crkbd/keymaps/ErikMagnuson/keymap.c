@@ -95,4 +95,24 @@
         // ... handle other custom keycodes here ...
     }
     return true; // Process all other keys normally
+    }
+
+    void rgb_matrix_indicators_user(void) {
+    // 1. Turn off all other keys first (make them black)
+        rgb_matrix_set_color_all(0, 0, 0);
+
+    // 2. Check which layer is active
+    // "layer_state" is the current state of all layers
+    // "get_highest_layer" grabs the topmost active layer
+        switch (get_highest_layer(layer_state)) {
+
+            case WIN: 
+                // rgb_matrix_set_color(LED_INDEX, R, G, B)
+                rgb_matrix_set_color(14, 255, 0, 0); 
+                break;
+
+            case MAC:
+                rgb_matrix_set_color(14, 0, 0, 255); 
+                break;
+    }
 }
