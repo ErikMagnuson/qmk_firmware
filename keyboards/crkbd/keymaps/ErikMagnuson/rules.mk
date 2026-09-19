@@ -1,7 +1,5 @@
-RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = yes
-
-# compress the firmware before loading
+LAYER_LOCK_ENABLE = yes
 LTO_ENABLE = yes
 # makes sure all the keys you press get recorded
 NKRO_ENABLE = yes
